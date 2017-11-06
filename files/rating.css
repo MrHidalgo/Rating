@@ -1,0 +1,26 @@
+/*
+===
+*/
+.rating {
+    cursor: pointer;
+    position: relative;
+    width: 115px;
+    height: 22px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.rating > span {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #333;
+}
+.rating > img {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
