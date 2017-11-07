@@ -14,6 +14,7 @@ function calcRating(val) {
 function mouseSetRating(btn) {
 	btn
 		.on('mousemove', function(e) {
+			console.log(e.target);
 			var parentOffset = $(this).offset(),
 				relX = e.pageX - parentOffset.left;
 			
@@ -23,6 +24,8 @@ function mouseSetRating(btn) {
 		})
 		.on('click', function(e) {
 			e.preventDefault();
+			
+			console.log(e.target);
 			
 			var parentOffset = $(this).offset(),
 				relX = e.pageX - parentOffset.left;
@@ -39,16 +42,22 @@ function mouseSetRating(btn) {
 		});
 }
 
-$(function() {
-	var ratingBtn = $('.rating'),
-		ratingValOnLoad = ratingBtn.attr("data-rating"),
-		ratingFillElem = ratingBtn.find('span');
-	
-	var loadSetRatingVal = (ratingValOnLoad / 5) * 115;
-	
-	ratingFillElem.css({
-		width: loadSetRatingVal
+function setOnLoadRation(btn) {
+	btn.each(function(idx, item) {
+		var ratingValOnLoad = $(item).attr("data-rating"),
+			ratingFillElem = $(item).find('span');
+		
+		var loadSetRatingVal = (ratingValOnLoad / 5) * 115;
+		
+		ratingFillElem.css({
+			width: loadSetRatingVal
+		});
 	});
+}
+
+$(function() {
+	var ratingBtn = $('.rating');
 	
+	setOnLoadRation(ratingBtn);
 	mouseSetRating(ratingBtn);
 });
